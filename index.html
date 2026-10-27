@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JPD Travels | Your Journey, Our Responsibility</title>
+    <meta
+      name="description"
+      content="JPD Travels offers premium taxi, airport transfers, local travel, corporate rides and outstation bookings across Tamil Nadu."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #102a43;
+        --blue: #2563eb;
+        --orange: #f59e0b;
+        --bg: #f4f7fb;
+        --white: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --success: #16a34a;
+        --danger: #dc2626;
+        --shadow: 0 18px 40px rgba(16, 42, 67, 0.12);
+        --radius: 20px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: var(--white);
+        color: var(--text);
+      }
+      img { max-width: 100%; display: block; }
+      a { text-decoration: none; color: inherit; }
+      button, input, select, textarea { font: inherit; }
+      .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      .section { padding: 96px 0; }
+      .section-header { text-align: center; max-width: 680px; margin: 0 auto 40px; }
+      .eyebrow {
+        display: inline-block; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+        color: var(--blue); background: rgba(37, 99, 235, 0.08); padding: 8px 12px; border-radius: 999px;
+      }
+      h1,h2,h3,h4,p { margin-top: 0; }
+      h1 {
+        font-size: clamp(2.5rem, 4vw, 4.3rem); line-height: 1.05; letter-spacing: -0.05em; margin-bottom: 18px;
+      }
+      h2 { font-size: clamp(2rem, 3vw, 3rem); line-height: 1.12; letter-spacing: -0.04em; margin-bottom: 12px; }
+      p { color: var(--muted); line-height: 1.7; }
+      .section-header p { margin-bottom: 0; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: none; border-radius: 14px;
+        padding: 14px 24px; font-weight: 700; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn-primary { background: linear-gradient(135deg, var(--orange), #fbbf24); color: var(--navy); box-shadow: 0 12px 25px rgba(245, 158, 11, 0.25); }
+      .btn-secondary { background: rgba(37, 99, 235, 0.1); color: var(--blue); }
+      .btn-dark { background: var(--navy); color: var(--white); }
+      .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--navy); }
+      .topbar{
+        position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(16,42,67,0.08);
+      }
+      .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 28px; height: 82px; }
+      .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; color: var(--navy); }
+      .brand-mark {
+        width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--blue));
+        position: relative; box-shadow: 0 12px 28px rgba(16,42,67,0.2);
+      }
+      .brand-mark::before {
+        content: ""; position: absolute; width: 22px; height: 12px; border: 4px solid #fff; border-radius: 8px 8px 10px 10px;
+        left: 9px; top: 12px; box-sizing: border-box;
+      }
+      .brand-mark::after {
+        content: ""; position: absolute; width: 12px; height: 12px; background: white; border-radius: 50%;
+        left: 14px; bottom: 8px; box-shadow: 12px 0 0 white;
+      }
+      .brand small { display: block; color: var(--blue); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+      .nav-links { display: flex; align-items: center; gap: 26px; color: var(--navy); font-weight: 600; }
+      .nav-links a { position: relative; transition: color 0.2s ease; }
+      .nav-links a::after {
+        content: ""; position: absolute; left: 0; bottom: -8px; width: 100%; height: 2px; background: var(--blue); transform: scaleX(0); transition: transform 0.2s ease;
+      }
+      .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+      .nav-actions { display: flex; align-items: center; gap: 14px; }
+      .nav-toggle { display: none; }
+      .hero {
+        position: relative; background: linear-gradient(120deg, rgba(16,42,67,0.86), rgba(28,66,125,0.4)), url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; color: var(--white); min-height: 760px;
+        display: flex; align-items: center;
+      }
+      .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.25), transparent 40%); }
+      .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; padding: 60px 0; }
+      .hero-copy { max-width: 620px; }
+      .hero-copy .eyebrow { background: rgba(255,255,255,0.12); color: #dbeafe; }
+      .hero-copy p { color: rgba(255,255,255,0.8); font-size: 1.12rem; margin-bottom: 26px; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 30px; }
+      .trust-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+      .trust-badge {
+        padding: 16px 10px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+        text-align: center; font-weight: 600;
+      }
+      .booking-panel { background: rgba(255,255,255,0.96); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; color: var(--navy); }
+      .booking-panel h3 { margin-bottom: 18px; font-size: 1.5rem; }
+      .booking-form { display: grid; gap: 14px; }
+      .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+      .input-wrap { display: flex; flex-direction: column; gap: 8px; }
+      label { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+      input, select, textarea {
+        width: 100%; border: 1px solid var(--line); background: #f9fafb; border-radius: 12px; padding: 12px 14px; color: var(--text); transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      textarea { resize: vertical; min-height: 100px; }
+      input:focus, select:focus, textarea:focus {
+        outline: none; border-color: rgba(37,99,235,0.4); box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+      }
+      .booking-form .btn { margin-top: 8px; }
+      .service-grid, .fleet-grid, .feature-grid, .testimonials, .stats-grid, .admin-grid, .contact-grid, .dashboard-grid { display: grid; gap: 24px; }
+      .service-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      .service-card, .fleet-card, .feature-card, .testimonial, .stat-card, .contact-card, .dashboard-panel, .mini-card { background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 10px 24px rgba(15,23,42,0.04); }
+      .service-card { padding: 28px 22px; }
+      .service-icon {
+        width: 54px; height: 54px; display: grid; place-items: center; border-radius: 18px; font-size: 1.5rem;
+        background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(245,158,11,0.12)); color: var(--blue); margin-bottom: 18px;
+      }
+      .service-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+      .service-card .btn { margin-top: 12px; padding: 10px 16px; font-size: 0.9rem; }
+      .fleet-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .fleet-card { overflow: hidden; }
+      .fleet-card img { width: 100%; height: 220px; object-fit: cover; }
+      .fleet-body { padding: 18px 18px 22px; }
+      .fleet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+      .status {
+        display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: 0.74rem; font-weight: 700;
+        background: rgba(22,163,74,0.1); color: var(--success);
+      }
+      .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--success); }
+      .muted-tag {
+        display: inline-flex; border-radius: 999px; background: rgba(16,42,67,0.06); color: var(--navy); padding: 5px 8px;
+        font-size: 0.7rem; font-weight: 700;
+      }
+      .spec-list { list-style: none; padding: 0; margin: 16px 0 18px; display: grid; gap: 8px; color: var(--muted); font-size: 0.92rem; }
+      .spec-list li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+      .fleet-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      .price { font-size: 1.5rem; color: var(--navy); font-weight: 800; }
+      .price small { font-size: 0.82rem; color: var(--muted); }
+      .feature-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      .feature-card { padding: 26px 22px; }
+      .feature-icon {
+        width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; font-size: 1.4rem; background: rgba(16,42,67,0.06); margin-bottom: 16px;
+      }
+      .steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; }
+      .step-box {
+        position: relative; padding: 30px 22px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 12px 24px rgba(15,23,42,0.04);
+      }
+      .step-num {
+        width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 18px; font-weight: 800; color: var(--navy); background: rgba(37,99,235,0.08);
+      }
+      .testimonials { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .testimonial { padding: 28px 22px; }
+      .stars { color: #fbbf24; letter-spacing: 0.15em; font-size: 1rem; margin-bottom: 14px; }
+      .person { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+      .avatar {
+        width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--blue)); display: grid; place-items: center; color: var(--white); font-weight: 800;
+      }
+      .booking-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; }
+      .checkout-box, .summary-box { background: var(--white); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 16px 36px rgba(15,23,42,0.06); }
+      .checkout-box { padding: 28px; }
+      .summary-box { padding: 28px 24px; position: sticky; top: 100px; }
+      .step-track { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+      .step-pill { padding: 8px 12px; border-radius: 999px; background: rgba(16,42,67,0.05); color: var(--navy); font-size: 0.75rem; font-weight: 700; }
+      .step-pill.active { background: rgba(37,99,235,0.12); color: var(--blue); }
+      .booking-section { display: grid; gap: 18px; }
+      .booking-title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+      .field-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+      .filter-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin: 18px 0 10px; }
+      .filter-grid .input-wrap { gap: 6px; }
+      .car-list { display: grid; gap: 14px; margin-top: 12px; }
+      .car-option {
+        display: grid; grid-template-columns: 150px 1fr auto; gap: 16px; align-items: center; border: 1px solid var(--line); border-radius: 18px; padding: 14px; background: linear-gradient(180deg, rgba(244,247,251,0.5), rgba(255,255,255,1)); cursor: pointer; transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+      .car-option:hover, .car-option.selected { border-color: rgba(37,99,235,0.35); box-shadow: 0 10px 22px rgba(37,99,235,0.08); }
+      .car-option img { width: 100%; height: 100px; object-fit: cover; border-radius: 12px; }
+      .car-option h4 { margin-bottom: 4px; }
+      .car-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .chip { padding: 5px 8px; border-radius: 999px; background: rgba(16,42,67,0.05); color: var(--muted); font-size: 0.7rem; font-weight: 600; }
+      .car-price { text-align: right; }
+      .car-price strong { display: block; font-size: 1.5rem; line-height: 1; }
+      .car-price span { color: var(--muted); font-size: 0.78rem; }
+      .car-detail { margin-top: 22px; padding: 18px; border-radius: 18px; background: rgba(37,99,235,0.03); border: 1px solid rgba(37,99,235,0.15); }
+      .detail-header { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 10px; }
+      .charges { display: grid; gap: 10px; margin-top: 16px; }
+      .charge-row { display: flex; justify-content: space-between; gap: 16px; font-size: 0.92rem; color: var(--muted); }
+      .charge-row strong { color: var(--navy); }
+      .summary-box h3 { margin-bottom: 18px; }
+      .summary-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 12px; }
+      .summary-list li { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); }
+      .summary-list li strong { color: var(--navy); }
+      .total-box { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: 700; }
+      .total-box span:last-child { color: var(--navy); font-size: 1.7rem; }
+      .confirmation { display: none; margin-top: 18px; padding: 20px; border-radius: 18px; background: rgba(22,163,74,0.06); border: 1px solid rgba(22,163,74,0.2); }
+      .confirmation.show { display: block; }
+      .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 22px; }
+      .stat-card { padding: 24px 18px; }
+      .stat-card strong { display: block; font-size: 2rem; color: var(--navy); }
+      .admin-grid { grid-template-columns: 1.1fr 0.9fr; }
+      .dashboard-panel { padding: 24px; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { text-align: left; padding: 14px 12px; border-bottom: 1px solid var(--line); color: var(--muted); }
+      th { color: var(--navy); font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; }
+      .pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 6px 10px; font-size: 0.72rem; font-weight: 700; }
+      .pill.confirmed { background: rgba(22,163,74,0.12); color: var(--success); }
+      .pill.pending { background: rgba(245,158,11,0.12); color: #b45309; }
+      .pill.cancelled { background: rgba(220,38,38,0.1); color: var(--danger); }
+      .dashboard-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .mini-chart { height: 180px; display: flex; align-items: end; gap: 12px; margin-top: 18px; }
+      .bar { flex: 1; background: linear-gradient(180deg, var(--blue), var(--navy)); border-radius: 12px 12px 0 0; min-height: 40px; }
+      .contact-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .contact-card { padding: 24px; }
+      .footer { background: #091826; color: rgba(255,255,255,0.8); padding: 72px 0 30px; }
+      .footer-grid { display: grid; grid-template-columns: 1.5fr 0.8fr 1fr 1.1fr; gap: 28px; }
+      .footer h4 { color: var(--white); margin-bottom: 14px; }
+      .footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+      .highlight { color: var(--orange); }
+      .floating-whatsapp {
+        position: fixed; right: 24px; bottom: 26px; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #25d366, #1ebd5d);
+        box-shadow: 0 18px 28px rgba(37, 211, 102, 0.35); display: grid; place-items: center; color: var(--white); font-size: 1.8rem; z-index: 50;
+      }
+      @media (max-width: 980px) {
+        .nav-links { position: absolute; top: 82px; left: 16px; right: 16px; display: none; flex-direction: column; align-items: flex-start; padding: 18px 20px; background: rgba(255,255,255,0.98); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 18px 30px rgba(16,42,67,0.08); }
+        .nav-links.open { display: flex; }
+        .nav-toggle { display: inline-flex; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: transparent; justify-content: center; align-items: center; font-size: 1.3rem; color: var(--navy); }
+        .nav-actions .btn { display: none; }
+        .hero-inner, .booking-layout, .admin-grid, .footer-grid { grid-template-columns: 1fr; }
+        .service-grid, .fleet-grid, .feature-grid, .testimonials, .stats-grid, .contact-grid, .dashboard-grid, .steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      }
+      @media (max-width: 700px) {
+        .service-grid, .fleet-grid, .feature-grid, .testimonials, .stats-grid, .contact-grid, .dashboard-grid, .steps, .field-row, .form-grid, .filter-grid, .trust-row { grid-template-columns: 1fr; }
+        .hero { min-height: auto; }
+        .hero-inner { padding: 40px 0 60px; }
+        .booking-form .btn, .hero-actions { width: 100%; }
+        .hero-actions .btn { width: 100%; }
+        .car-option { grid-template-columns: 1fr; }
+        .summary-box { position: static; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="#home" class="brand" aria-label="JPD Travels home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            JPD Travels
+            <small>Your Journey, Our Responsibility</small>
+          </span>
+        </a>
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#book">Book a Car</a>
+          <a href="#fleet">Our Fleet</a>
+          <a href="#services">Services</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
+          <a href="#dashboard">My Bookings</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="#dashboard">Login / Sign Up</a>
+          <a class="btn btn-primary" href="#book">Book Now</a>
+          <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Premium Travel Across Tamil Nadu</span>
+            <h1>Your Journey Starts with JPD Travels</h1>
+            <p>Comfortable rides, reliable drivers, and affordable travel solutions for every journey.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#book">Search Available Cars</a>
+              <a class="btn btn-secondary" href="tel:+919876543210">Call Now</a>
+            </div>
+            <div class="trust-row">
+              <div class="trust-badge">Safe &amp; Reliable</div>
+              <div class="trust-badge">Professional Drivers</div>
+              <div class="trust-badge">Transparent Pricing</div>
+              <div class="trust-badge">Easy Booking</div>
+            </div>
+          </div>
+
+          <div class="booking-panel">
+            <h3>Book Your Ride</h3>
+            <form class="booking-form" id="heroForm">
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="pickupLocation">Pickup location</label>
+                  <input id="pickupLocation" name="pickupLocation" type="text" value="Chennai Airport" required />
+                </div>
+                <div class="input-wrap">
+                  <label for="dropLocation">Drop-off location</label>
+                  <input id="dropLocation" name="dropLocation" type="text" value="T Nagar" required />
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="tripType">Trip type</label>
+                  <select id="tripType" name="tripType">
+                    <option>One-way</option>
+                    <option>Round trip</option>
+                    <option>Local</option>
+                    <option>Airport Transfer</option>
+                  </select>
+                </div>
+                <div class="input-wrap">
+                  <label for="passengers">Number of passengers</label>
+                  <select id="passengers" name="passengers">
+                    <option>2</option>
+                    <option selected>4</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>9</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="pickupDate">Pickup date</label>
+                  <input id="pickupDate" type="date" value="2026-11-12" required />
+                </div>
+                <div class="input-wrap">
+                  <label for="pickupTime">Pickup time</label>
+                  <input id="pickupTime" type="time" value="09:00" required />
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="returnDate">Return date</label>
+                  <input id="returnDate" type="date" value="2026-11-14" />
+                </div>
+                <div class="input-wrap">
+                  <label for="category">Preferred vehicle category</label>
+                  <select id="category" name="category">
+                    <option>Any</option>
+                    <option>Sedan</option>
+                    <option>Hatchback</option>
+                    <option>SUV</option>
+                    <option>Premium Sedan</option>
+                    <option>Family MUV</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Search Available Cars</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Popular Services</span>
+            <h2>Travel solutions tailored to every journey</h2>
+          </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <div class="service-icon">🚕</div>
+              <h3>Local City Travel</h3>
+              <p>Fast, comfortable rides for daily commuting, errands, meetings, and weekend plans.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">🛣️</div>
+              <h3>Outstation One-Way</h3>
+              <p>Reliable long-distance travel for family trips, business meetings, and weekend escapes.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">🔁</div>
+              <h3>Round Trip Bookings</h3>
+              <p>Easy return trip plans with fixed fare options and transparent daily travel rates.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">✈️</div>
+              <h3>Airport Transfers</h3>
+              <p>Punctual pick-ups and drop-offs for flights, family arrivals, and business travel.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">⏱️</div>
+              <h3>Hourly Car Rental</h3>
+              <p>Flexible local rentals for shopping, meetings, city travel, or multi-stop itineraries.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">🏢</div>
+              <h3>Corporate Travel</h3>
+              <p>Professional fleet services for executives, team transfers, and business events.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">👨‍👩‍👧‍👦</div>
+              <h3>Family Trips</h3>
+              <p>Comfortable, spacious vehicles for family outings and secure inter-city travel.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">🎉</div>
+              <h3>Weddings &amp; Events</h3>
+              <p>Elegant transportation for weddings, engagements, receptions, and special occasions.</p>
+              <a href="#book" class="btn btn-secondary">Book Now</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="fleet">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Featured Fleet</span>
+            <h2>Choose the right vehicle for your travel style</h2>
+          </div>
+          <div class="fleet-grid" id="fleetGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Why Choose Us</span>
+            <h2>Service built on trust, comfort and reliability</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-icon">👨‍✈️</div>
+              <h3>Experienced Drivers</h3>
+              <p>Verified, courteous chauffeurs trained for safe and comfortable city and highway travel.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🚗</div>
+              <h3>Well-Maintained Vehicles</h3>
+              <p>Clean, dependable cabs and SUVs maintained to keep every trip smooth and secure.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">₹</div>
+              <h3>Transparent Pricing</h3>
+              <p>Honest fare breakdown with clear charges for distance, driver allowance, tolls and extras.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">⏰</div>
+              <h3>On-Time Pickup</h3>
+              <p>Real-time coordination helps ensure punctual pickup and smooth route planning.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🧭</div>
+              <h3>Flexible Options</h3>
+              <p>Options for local, outstation, airport, hourly, corporate and return-trip bookings.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">💬</div>
+              <h3>Customer Support</h3>
+              <p>Simple communication through phone, WhatsApp and support channels for all bookings.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">💻</div>
+              <h3>Easy Online Booking</h3>
+              <p>Reserve your ride online in minutes with a streamlined multi-step booking flow.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🛡️</div>
+              <h3>Safe &amp; Comfortable</h3>
+              <p>Travel support that prioritizes comfort, safety and a stress-free experience for every rider.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--bg);">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">How It Works</span>
+            <h2>Book in four simple steps</h2>
+          </div>
+          <div class="steps">
+            <div class="step-box">
+              <div class="step-num">1</div>
+              <h3>Enter trip details</h3>
+              <p>Share pickup, destination, date, passengers and trip type to begin your itinerary.</p>
+            </div>
+            <div class="step-box">
+              <div class="step-num">2</div>
+              <h3>Select vehicle</h3>
+              <p>Choose from suitable cars based on capacity, luggage, AC preference and price.</p>
+            </div>
+            <div class="step-box">
+              <div class="step-num">3</div>
+              <h3>Confirm details</h3>
+              <p>Review customer information, special requirements and fare estimate before checkout.</p>
+            </div>
+            <div class="step-box">
+              <div class="step-num">4</div>
+              <h3>Receive confirmation</h3>
+              <p>Get your booking reference, trip information and support details from JPD Travels.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Customer Testimonials</span>
+            <h2>Travelers love the experience</h2>
+          </div>
+          <div class="testimonials">
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p>“The driver arrived exactly on time and the car was spotless. Booking was easy and pricing was very transparent.”</p>
+              <div class="person">
+                <div class="avatar">R</div>
+                <div><strong>Rohit S.</strong><br /><span>Chennai Airport Transfer</span></div>
+              </div>
+            </article>
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p>“We used JPD Travels for a family trip to Ooty. Spacious SUV, courteous driver and excellent support from booking to drop.”</p>
+              <div class="person">
+                <div class="avatar">P</div>
+                <div><strong>Priya N.</strong><br /><span>Family Outstation Ride</span></div>
+              </div>
+            </article>
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p>“Professional service, fair pricing and very smooth corporate travel experience. Highly recommended for business trips.”</p>
+              <div class="person">
+                <div class="avatar">K</div>
+                <div><strong>Karthik M.</strong><br /><span>Corporate Travel</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="book" style="background: var(--bg);">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Booking Journey</span>
+            <h2>Search, select and confirm your ride</h2>
+          </div>
+          <div class="booking-layout">
+            <div class="checkout-box">
+              <div class="step-track" aria-label="Booking progress">
+                <span class="step-pill active">Step 1: Trip Details</span>
+                <span class="step-pill">Step 2: Cars</span>
+                <span class="step-pill">Step 3: Customer</span>
+                <span class="step-pill">Step 4: Fare</span>
+              </div>
+
+              <div class="booking-section">
+                <div class="booking-title-row">
+                  <h3>Trip Details</h3>
+                  <span class="muted-tag">One-way / Round trip / Local</span>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="bookingTripType">Trip type</label>
+                    <select id="bookingTripType">
+                      <option>One-way</option>
+                      <option>Round trip</option>
+                      <option>Local</option>
+                      <option>Airport Transfer</option>
+                    </select>
+                  </div>
+                  <div class="input-wrap">
+                    <label for="bookingPassengers">Passenger count</label>
+                    <select id="bookingPassengers">
+                      <option>2</option>
+                      <option selected>4</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>9</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="pickupCity">Pickup city</label>
+                    <input id="pickupCity" type="text" value="Chennai" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="dropCity">Destination city</label>
+                    <input id="dropCity" type="text" value="Madurai" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="pickupAddress">Pickup address</label>
+                    <input id="pickupAddress" type="text" value="Chennai Airport Terminal 1" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="destinationAddress">Destination address</label>
+                    <input id="destinationAddress" type="text" value="Madurai Railway Station" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="tripDate">Pickup date</label>
+                    <input id="tripDate" type="date" value="2026-11-12" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="tripTime">Pickup time</label>
+                    <input id="tripTime" type="time" value="09:30" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="returnDateBooking">Return date</label>
+                    <input id="returnDateBooking" type="date" value="2026-11-14" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="specialRequirements">Additional requirements</label>
+                    <input id="specialRequirements" type="text" value="Child seat requested" />
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="applyFiltersBtn">Find Available Cars</button>
+              </div>
+
+              <div class="booking-section" style="margin-top: 28px;">
+                <div class="booking-title-row">
+                  <h3>Available Cars</h3>
+                  <span class="muted-tag">Matching your trip</span>
+                </div>
+                <div class="filter-grid">
+                  <div class="input-wrap">
+                    <label for="filterCategory">Vehicle category</label>
+                    <select id="filterCategory">
+                      <option value="All">All</option>
+                      <option value="Hatchback">Hatchback</option>
+                      <option value="Sedan">Sedan</option>
+                      <option value="SUV">SUV</option>
+                      <option value="Premium Sedan">Premium Sedan</option>
+                      <option value="Family MUV">Family MUV</option>
+                    </select>
+                  </div>
+                  <div class="input-wrap">
+                    <label for="filterPassengers">Passengers</label>
+                    <select id="filterPassengers">
+                      <option value="0">Any</option>
+                      <option value="4">4+</option>
+                      <option value="6">6+</option>
+                      <option value="7">7+</option>
+                    </select>
+                  </div>
+                  <div class="input-wrap">
+                    <label for="filterPrice">Price range</label>
+                    <select id="filterPrice">
+                      <option value="all">Any</option>
+                      <option value="0-2000">₹0 - ₹2000</option>
+                      <option value="2000-4000">₹2000 - ₹4000</option>
+                      <option value="4000-7000">₹4000 - ₹7000</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="car-list" id="carList"></div>
+                <div class="car-detail" id="carDetailPanel">
+                  <div class="detail-header">
+                    <h4>Selected Car Details</h4>
+                    <span class="muted-tag">Included services</span>
+                  </div>
+                  <p>Select a vehicle to view fares, included kilometers, driver policy and extra charges.</p>
+                </div>
+              </div>
+
+              <div class="booking-section" style="margin-top: 28px;">
+                <div class="booking-title-row">
+                  <h3>Customer Information</h3>
+                  <span class="muted-tag">Secure checkout</span>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="customerName">Full name</label>
+                    <input id="customerName" type="text" value="Arun Kumar" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="customerMobile">Mobile number</label>
+                    <input id="customerMobile" type="tel" value="+91 9876543210" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="customerEmail">Email address</label>
+                    <input id="customerEmail" type="email" value="arun@example.com" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="gstToggle">GST invoice</label>
+                    <select id="gstToggle">
+                      <option>No</option>
+                      <option>Yes</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="pickupAddrCustomer">Pickup address</label>
+                    <input id="pickupAddrCustomer" type="text" value="Chennai Airport Terminal 1" />
+                  </div>
+                  <div class="input-wrap">
+                    <label for="destinationAddrCustomer">Destination address</label>
+                    <input id="destinationAddrCustomer" type="text" value="Madurai Railway Station" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="input-wrap">
+                    <label for="specialInstructions">Special instructions</label>
+                    <textarea id="specialInstructions">Need a child seat and a clean cab for family travel.</textarea>
+                  </div>
+                </div>
+                <div class="input-wrap">
+                  <label><input type="checkbox" checked /> I agree to the privacy consent and booking terms.</label>
+                </div>
+              </div>
+            </div>
+
+            <aside class="summary-box">
+              <h3>Fare Summary</h3>
+              <ul class="summary-list">
+                <li><span>Base fare</span> <strong id="baseFare">₹0</strong></li>
+                <li><span>Distance / package charge</span> <strong id="distanceCharge">₹0</strong></li>
+                <li><span>Additional kilometre</span> <strong id="extraKm">₹0</strong></li>
+                <li><span>Driver allowance</span> <strong id="driverAllowance">₹0</strong></li>
+                <li><span>Toll and parking</span> <strong id="tollParking">₹0</strong></li>
+                <li><span>Tax</span> <strong id="tax">₹0</strong></li>
+                <li><span>Discount</span> <strong id="discount">₹0</strong></li>
+              </ul>
+              <div class="total-box">
+                <span>Total Estimate</span>
+                <span id="totalAmount">₹0</span>
+              </div>
+              <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="confirmBookingBtn">Submit Booking</button>
+                <button class="btn btn-outline" type="button">Download Quote</button>
+              </div>
+              <div class="confirmation" id="confirmationBox">
+                <h4>Booking Confirmed</h4>
+                <p id="confirmationText">Your booking request has been submitted.</p>
+                <div class="charges">
+                  <div class="charge-row"><span>Booking reference</span> <strong id="bookingRef">JPD-2026112</strong></div>
+                  <div class="charge-row"><span>Vehicle selected</span> <strong id="selectedVehicleName">-</strong></div>
+                  <div class="charge-row"><span>Pickup</span> <strong id="pickupStatus">-</strong></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="dashboard" style="background: var(--white);">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Customer &amp; Admin Views</span>
+            <h2>Booking management at a glance</h2>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="muted-tag">Total bookings</span>
+              <strong>1,284</strong>
+              <p>Across local, airport and outstation travel.</p>
+            </div>
+            <div class="stat-card">
+              <span class="muted-tag">Today's bookings</span>
+              <strong>46</strong>
+              <p>High occupancy and strong weekday demand.</p>
+            </div>
+            <div class="stat-card">
+              <span class="muted-tag">Revenue</span>
+              <strong>₹4.9L</strong>
+              <p>Monthly revenue from confirmed rides.</p>
+            </div>
+            <div class="stat-card">
+              <span class="muted-tag">Pending approvals</span>
+              <strong>18</strong>
+              <p>Bookings waiting for confirmation or payment.</p>
+            </div>
+          </div>
+
+          <div class="admin-grid" style="margin-top: 34px;">
+            <div class="dashboard-panel">
+              <h3>Booking Management</h3>
+              <div class="table-wrap" style="margin-top: 18px;">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Booking</th>
+                      <th>Customer</th>
+                      <th>Vehicle</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>JPD-1024</td>
+                      <td>Arun K.</td>
+                      <td>Swift Dzire</td>
+                      <td><span class="pill confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr>
+                      <td>JPD-1046</td>
+                      <td>Vikram R.</td>
+                      <td>Innova Crysta</td>
+                      <td><span class="pill pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <td>JPD-1083</td>
+                      <td>Sneha V.</td>
+                      <td>Tempo Traveller</td>
+                      <td><span class="pill cancelled">Cancelled</span></td>
+                    </tr>
+                    <tr>
+                      <td>JPD-1101</td>
+                      <td>Manoj P.</td>
+                      <td>Hyundai Creta</td>
+                      <td><span class="pill confirmed">Confirmed</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dashboard-panel">
+              <h3>Revenue Trend</h3>
+              <div class="mini-chart" aria-label="Revenue chart">
+                <div class="bar" style="height: 40%"></div>
+                <div class="bar" style="height: 55%"></div>
+                <div class="bar" style="height: 50%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 88%"></div>
+                <div class="bar" style="height: 100%"></div>
+              </div>
+              <p style="margin-top: 18px;">Strong growth with peak bookings during weekends and airport transfers.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact" style="background: var(--bg);">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Contact</span>
+            <h2>Reach JPD Travels today</h2>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Call Us</h3>
+              <p><strong>Phone:</strong> +91 98765 43210</p>
+              <p><strong>WhatsApp:</strong> +91 98765 43210</p>
+            </div>
+            <div class="contact-card">
+              <h3>Email</h3>
+              <p><strong>General:</strong> hello@jpdtravels.in</p>
+              <p><strong>Support:</strong> support@jpdtravels.in</p>
+            </div>
+            <div class="contact-card">
+              <h3>Business Address</h3>
+              <p>22A Anna Salai, Chennai, Tamil Nadu 600002</p>
+              <p>Open daily: 6:00 AM - 11:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand" style="color: var(--white); margin-bottom: 16px;">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>
+              JPD Travels
+              <small style="color: rgba(255,255,255,0.7);">Your Journey, Our Responsibility</small>
+            </span>
+          </div>
+          <p>Premium car rental and taxi booking services designed for comfort, reliability and affordable travel across Tamil Nadu.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#book">Book a Car</a></li>
+            <li><a href="#fleet">Our Fleet</a></li>
+            <li><a href="#services">Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li>Local City Travel</li>
+            <li>Airport Transfers</li>
+            <li>Corporate Travel</li>
+            <li>Outstation Trips</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li>22A Anna Salai, Chennai</li>
+            <li>+91 98765 43210</li>
+            <li>hello@jpdtravels.in</li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container" style="border-top: 1px solid rgba(255,255,255,0.12); margin-top: 30px; padding-top: 22px; text-align: center; color: rgba(255,255,255,0.7);">
+        © 2026 JPD Travels. All rights reserved.
+      </div>
+    </footer>
+
+    <a class="floating-whatsapp" href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">✆</a>
+
+    <script>
+      const vehicles = [
+        { id: 1, name: "Maruti Swift Dzire", category: "Sedan", capacity: 4, luggage: 2, ac: "AC", transmission: "Automatic", price: 2499, image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80", status: "Available", kms: 300, duration: "Per day", included: ["Driver allowance", "Toll estimate", "Basic insurance"] },
+        { id: 2, name: "Hyundai Creta", category: "SUV", capacity: 5, luggage: 3, ac: "AC", transmission: "Manual", price: 3499, image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80", status: "Available", kms: 250, duration: "Per day", included: ["Driver allowance", "Toll estimate", "Free waiting 30 mins"] },
+        { id: 3, name: "Toyota Innova Crysta", category: "Family MUV", capacity: 7, luggage: 4, ac: "AC", transmission: "Automatic", price: 4199, image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=900&q=80", status: "Available", kms: 240, duration: "Per day", included: ["Driver allowance", "Toll estimate", "Premium seat comfort"] },
+        { id: 4, name: "Honda City", category: "Premium Sedan", capacity: 4, luggage: 2, ac: "AC", transmission: "Automatic", price: 3599, image: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80", status: "Limited", kms: 220, duration: "Per day", included: ["Driver allowance", "Basic insurance", "Airport pickup"] },
+        { id: 5, name: "Maruti Brezza", category: "Hatchback", capacity: 4, luggage: 2, ac: "Non-AC", transmission: "Manual", price: 1999, image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80", status: "Available", kms: 180, duration: "Per day", included: ["Driver allowance", "Basic support", "Local package"] },
+        { id: 6, name: "Force Traveller", category: "Tempo Traveller", capacity: 12, luggage: 6, ac: "AC", transmission: "Manual", price: 5599, image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80", status: "Available", kms: 300, duration: "Per day", included: ["Driver allowance", "Group friendly", "Extra luggage support"] }
+      ];
+
+      const fleetGrid = document.getElementById("fleetGrid");
+      const carList = document.getElementById("carList");
+      const carDetailPanel = document.getElementById("carDetailPanel");
+      const confirmBookingBtn = document.getElementById("confirmBookingBtn");
+      const confirmationBox = document.getElementById("confirmationBox");
+
+      function formatCurrency(value) {
+        return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value);
+      }
+
+      function renderFleet() {
+        fleetGrid.innerHTML = vehicles.map(vehicle => `
+          <article class="fleet-card">
+            <img src="${vehicle.image}" alt="${vehicle.name}" />
+            <div class="fleet-body">
+              <div class="fleet-head">
+                <div>
+                  <h3>${vehicle.name}</h3>
+                  <span class="muted-tag">${vehicle.category}</span>
+                </div>
+                <span class="status">${vehicle.status}</span>
+              </div>
+              <ul class="spec-list">
+                <li><span>Passengers</span> <strong>${vehicle.capacity}</strong></li>
+                <li><span>Luggage</span> <strong>${vehicle.luggage} bags</strong></li>
+                <li><span>AC</span> <strong>${vehicle.ac}</strong></li>
+                <li><span>Transmission</span> <strong>${vehicle.transmission}</strong></li>
+              </ul>
+              <div class="fleet-footer">
+                <div class="price">₹${vehicle.price.toLocaleString("en-IN")} <small>/ day</small></div>
+                <a class="btn btn-primary" href="#book">Book This Car</a>
+              </div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      let selectedVehicle = null;
+
+      function getFilteredVehicles() {
+        const category = document.getElementById("filterCategory").value;
+        const passengerNeeded = Number(document.getElementById("filterPassengers").value || 0);
+        const priceRange = document.getElementById("filterPrice").value;
+
+        return vehicles.filter(vehicle => {
+          const matchesCategory = category === "All" || vehicle.category === category;
+          const matchesPassengers = passengerNeeded === 0 || vehicle.capacity >= passengerNeeded;
+          const priceValue = vehicle.price;
+          let matchesPrice = true;
+
+          if (priceRange === "0-2000") matchesPrice = priceValue <= 2000;
+          else if (priceRange === "2000-4000") matchesPrice = priceValue >= 2000 && priceValue <= 4000;
+          else if (priceRange === "4000-7000") matchesPrice = priceValue >= 4000 && priceValue <= 7000;
+
+          return matchesCategory && matchesPassengers && matchesPrice;
+        });
+      }
+
+      function renderCars() {
+        const filtered = getFilteredVehicles();
+        if (!filtered.length) {
+          carList.innerHTML = "<div class='service-card'><h3>No vehicles match your filters</h3><p>Try adjusting the category, passenger count or price range.</p></div>";
+          carDetailPanel.innerHTML = "<div class='detail-header'><h4>Selected Car Details</h4><span class='muted-tag'>Included services</span></div><p>No car selected. Try different filters to find a suitable vehicle.</p>";
+          selectedVehicle = null;
+          return;
+        }
+
+        carList.innerHTML = filtered.map(vehicle => `
+          <div class="car-option ${selectedVehicle && selectedVehicle.id === vehicle.id ? "selected" : ""}" data-id="${vehicle.id}">
+            <img src="${vehicle.image}" alt="${vehicle.name}" />
+            <div>
+              <h4>${vehicle.name}</h4>
+              <div class="car-meta">
+                <span class="chip">${vehicle.category}</span>
+                <span class="chip">${vehicle.capacity} seats</span>
+                <span class="chip">${vehicle.luggage} luggage</span>
+                <span class="chip">${vehicle.ac}</span>
+              </div>
+            </div>
+            <div class="car-price">
+              <strong>₹${vehicle.price.toLocaleString("en-IN")}</strong>
+              <span>/${vehicle.duration.toLowerCase()}</span>
+            </div>
+          </div>
+        `).join("");
+
+        document.querySelectorAll(".car-option").forEach(option => {
+          option.addEventListener("click", () => {
+            const id = Number(option.dataset.id);
+            selectedVehicle = vehicles.find(vehicle => vehicle.id === id) || null;
+            renderDetailPanel();
+            renderCars();
+          });
+        });
+
+        if (!selectedVehicle) {
+          selectedVehicle = filtered[0];
+        }
+        renderDetailPanel();
+      }
+
+      function renderDetailPanel() {
+        if (!selectedVehicle) {
+          carDetailPanel.innerHTML = "<div class='detail-header'><h4>Selected Car Details</h4><span class='muted-tag'>Included services</span></div><p>Select a vehicle to view fares, included kilometres, driver policy and extra charges.</p>";
+          return;
+        }
+
+        const base = selectedVehicle.price;
+        const driverAllowance = 400;
+        const estToll = 250;
+        const tax = Math.round(base * 0.05);
+        const discount = 200;
+        const total = base + driverAllowance + estToll + tax - discount;
+
+        carDetailPanel.innerHTML = `
+          <div class="detail-header">
+            <h4>${selectedVehicle.name}</h4>
+            <span class="muted-tag">${selectedVehicle.category}</span>
+          </div>
+          <div class="spec-list" style="grid-template-columns: repeat(3, minmax(0,1fr)); margin: 0 0 14px;">
+            <div><strong>${selectedVehicle.capacity}</strong><br><span>Passengers</span></div>
+            <div><strong>${selectedVehicle.luggage}</strong><br><span>Luggage</span></div>
+            <div><strong>${selectedVehicle.kms} km</strong><br><span>Included</span></div>
+          </div>
+          <p>${selectedVehicle.included.join(" • ")}</p>
+          <div class="charges">
+            <div class="charge-row"><span>Base fare</span> <strong>${formatCurrency(base)}</strong></div>
+            <div class="charge-row"><span>Extra km charge</span> <strong>${formatCurrency(150)}</strong></div>
+            <div class="charge-row"><span>Extra hour charge</span> <strong>${formatCurrency(350)}</strong></div>
+            <div class="charge-row"><span>Driver allowance</span> <strong>${formatCurrency(driverAllowance)}</strong></div>
+            <div class="charge-row"><span>Toll, parking &amp; permit</span> <strong>${formatCurrency(estToll)}</strong></div>
+            <div class="charge-row"><span>GST</span> <strong>${formatCurrency(tax)}</strong></div>
+            <div class="charge-row"><span>Discount</span> <strong>-${formatCurrency(discount)}</strong></div>
+            <div class="charge-row"><span>Estimated total</span> <strong>${formatCurrency(total)}</strong></div>
+          </div>
+        `;
+
+        updateSummary();
+      }
+
+      function updateSummary() {
+        const selected = selectedVehicle || vehicles[0];
+        const base = selected.price;
+        const distanceCharge = Math.min(base * 0.8, 2200);
+        const extraKm = 150;
+        const driverAllowance = 400;
+        const tollParking = 250;
+        const tax = Math.round(base * 0.05);
+        const discount = 200;
+        const total = base + distanceCharge + extraKm + driverAllowance + tollParking + tax - discount;
+
+        document.getElementById("baseFare").textContent = formatCurrency(base);
+        document.getElementById("distanceCharge").textContent = formatCurrency(distanceCharge);
+        document.getElementById("extraKm").textContent = formatCurrency(extraKm);
+        document.getElementById("driverAllowance").textContent = formatCurrency(driverAllowance);
+        document.getElementById("tollParking").textContent = formatCurrency(tollParking);
+        document.getElementById("tax").textContent = formatCurrency(tax);
+        document.getElementById("discount").textContent = `-${formatCurrency(discount)}`;
+        document.getElementById("totalAmount").textContent = formatCurrency(total);
+        document.getElementById("selectedVehicleName").textContent = selected.name;
+      }
+
+      function generateReference() {
+        const random = Math.floor(100000 + Math.random() * 900000);
+        return `JPD-${random}`;
+      }
+
+      document.getElementById("heroForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        document.getElementById("filterCategory").value = document.getElementById("category").value || "All";
+        document.getElementById("filterPassengers").value = document.getElementById("passengers").value || "0";
+        renderCars();
+        document.getElementById("book").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      document.getElementById("applyFiltersBtn").addEventListener("click", function() {
+        renderCars();
+      });
+
+      ["filterCategory", "filterPassengers", "filterPrice"].forEach(id => {
+        document.getElementById(id).addEventListener("change", renderCars);
+      });
+
+      confirmBookingBtn.addEventListener("click", function() {
+        const reference = generateReference();
+        const customerName = document.getElementById("customerName").value || "Guest Customer";
+        const pickup = document.getElementById("pickupAddress").value || "Pickup address";
+
+        document.getElementById("bookingRef").textContent = reference;
+        document.getElementById("confirmationText").textContent = `${customerName}, your booking for ${selectedVehicle ? selectedVehicle.name : "the selected car"} has been created successfully.`;
+        document.getElementById("pickupStatus").textContent = `${pickup} • ${document.getElementById("tripDate").value}`;
+        confirmationBox.classList.add("show");
+        confirmationBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+
+      document.getElementById("navToggle").addEventListener("click", function() {
+        document.getElementById("navLinks").classList.toggle("open");
+      });
+
+      renderFleet();
+      renderCars();
+      updateSummary();
+    </script>
+  </body>
+</html>
